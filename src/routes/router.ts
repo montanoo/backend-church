@@ -1,4 +1,5 @@
 import express, { Request, Response, Router } from "express";
+import loginRouter from "./auth.routes"; // Importa el loginRouter
 
 const router: Router = express.Router();
 
@@ -14,5 +15,8 @@ const router: Router = express.Router();
 router.get("/health", (req: Request, res: Response) => {
   res.status(200).send("health ok.");
 });
+
+// Manages Login route
+router.use("/auth", loginRouter);
 
 export default router;
