@@ -1,5 +1,5 @@
 import express, { Request, Response, Router } from "express";
-import loginRouter from "./authRouter"; // Importa el loginRouter
+import loginRouter from "./auth.routes"; // Importa el loginRouter
 
 const router: Router = express.Router();
 

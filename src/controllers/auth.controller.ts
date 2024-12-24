@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import authService from "../services/authService";
+import authService from "../services/auth.service";
 import { generateToken } from "../utils/token";
 
 const login = async (req: Request, res: Response): Promise<Response> => {
