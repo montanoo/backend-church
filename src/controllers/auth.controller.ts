@@ -25,10 +25,18 @@ const login = async (req: Request, res: Response): Promise<Response> => {
 
     const { id, username, role } = user;
     // Generates token
-    const token = generateToken({ id: id.toString(), username, role });
+    const token = generateToken({ id: id.toString(), username, role, email });
+
+    const response = {
+      token,
+      id,
+      username,
+      role,
+      email,
+    };
 
     // cookie configuration
-    res.cookie("authToken", token, {
+    res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
@@ -38,6 +46,7 @@ const login = async (req: Request, res: Response): Promise<Response> => {
     // Envía la respuesta al cliente
     return res.status(200).json({
       message: "Login successful",
+      user: response,
     });
   } catch (error) {
     console.error("Error in login:", error);

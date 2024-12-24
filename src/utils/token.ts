@@ -16,6 +16,7 @@ export interface UserPayload {
   id: string;
   username: string;
   role: string;
+  email: string;
 }
 
 if (!SECRET_KEY) {
@@ -37,8 +38,11 @@ export interface UserPayload {
  * @returns A signed JWT token as a string.
  */
 //example: const token = generateToken({ id: user.id, username: user.username, role: user.role });
-export const generateToken = (payload: UserPayload, expiresIn = "1h"): string => {
-  return jwt.sign(payload, SECRET_KEY, { expiresIn });
+export const generateToken = (
+  payload: UserPayload,
+  expiresIn = "7d"
+): string => {
+  return jwt.sign(payload, SECRET_KEY, { algorithm: "HS256", expiresIn });
 };
 
 /**

@@ -8,7 +8,7 @@ import { UserPayload } from "../utils/token";
 declare global {
   namespace Express {
     interface Request {
-      user?: JwtPayload & UserPayload; 
+      user?: JwtPayload & UserPayload;
     }
   }
 }
@@ -30,13 +30,15 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
 
     // Ensure the token contains a role
     if (!decoded.role) {
-      return res.status(403).json({ message: "Access denied: Role missing in token" });
+      return res
+        .status(403)
+        .json({ message: "Access denied: Role missing in token" });
     }
-      // Attach the decoded payload to the request object
-      req.user = decoded as JwtPayload & UserPayload;
-      // Call the next middleware
-      next();
-    } catch (error) {
+    // Attach the decoded payload to the request object
+    req.user = decoded as JwtPayload & UserPayload;
+    // Call the next middleware
+    next();
+  } catch (error) {
     return res.status(401).json({ message: "Unauthorized: Invalid token" });
   }
 };
