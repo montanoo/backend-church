@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from "express";
-import loginRouter from "./auth.routes"; // Importa el loginRouter
+import loginRouter from "./auth.routes"; 
+import parishRouter from "./parish.routes";
 
 const router: Router = express.Router();
 
@@ -18,5 +19,7 @@ router.get("/health", (req: Request, res: Response) => {
 
 // Manages Login route
 router.use("/auth", loginRouter);
+// Manages Parish crud route
+router.use("/parishes", parishRouter);
 
 export default router;
