@@ -11,7 +11,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /tokens:
+ * /api/tokens:
  *   post:
  *     summary: Create a new token
  *     tags: [Tokens]
@@ -40,7 +40,7 @@ router.post("/", createToken);
 
 /**
  * @swagger
- * /tokens/{id}:
+ * /api/tokens/{id}:
  *   get:
  *     summary: Get a token by ID
  *     tags: [Tokens]
@@ -63,7 +63,7 @@ router.get("/:id", getTokenById);
 
 /**
  * @swagger
- * /tokens:
+ * /api/tokens:
  *   get:
  *     summary: Get all tokens
  *     tags: [Tokens]
@@ -77,7 +77,7 @@ router.get("/", getAllTokens);
 
 /**
  * @swagger
- * /tokens/{id}:
+ * /api/tokens/{id}:
  *   put:
  *     summary: Update a token by ID
  *     tags: [Tokens]
@@ -111,7 +111,7 @@ router.put("/:id", updateToken);
 
 /**
  * @swagger
- * /tokens/{id}:
+ * /api/tokens/{id}:
  *   delete:
  *     summary: Delete a token by ID
  *     tags: [Tokens]
