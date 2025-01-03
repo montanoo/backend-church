@@ -12,21 +12,21 @@ const router = express.Router();
 /**
  * @swagger
  * tags:
- *   nameeate a new recurring event
- *     tags: [RecurringEvents]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:: RecurringEvents
+ *   name: RecurringEvents
  *   description: API for managing recurring events
  */
 
 /**
  * @swagger
- * /recurring-events:
+ * /api/recurring-events:
  *   post:
- *     summary: Cr
+ *     summary: Create a new recurring event
+ *     tags: [RecurringEvents]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
  *             type: object
  *             properties:
  *               recurringTitle:
@@ -55,7 +55,7 @@ router.post("/", createRecurringEvent);
 
 /**
  * @swagger
- * /recurring-events/{id}:
+ * /api/recurring-events/{id}:
  *   get:
  *     summary: Get a recurring event by ID
  *     tags: [RecurringEvents]
@@ -78,7 +78,7 @@ router.get("/:id", getRecurringEventById);
 
 /**
  * @swagger
- * /recurring-events:
+ * /api/recurring-events:
  *   get:
  *     summary: Get all recurring events
  *     tags: [RecurringEvents]
@@ -92,7 +92,7 @@ router.get("/", getAllRecurringEvents);
 
 /**
  * @swagger
- * /recurring-events/{id}:
+ * /api/recurring-events/{id}:
  *   put:
  *     summary: Update a recurring event by ID
  *     tags: [RecurringEvents]
@@ -136,7 +136,7 @@ router.put("/:id", updateRecurringEvent);
 
 /**
  * @swagger
- * /recurring-events/{id}:
+ * /api/recurring-events/{id}:
  *   delete:
  *     summary: Delete a recurring event by ID
  *     tags: [RecurringEvents]
