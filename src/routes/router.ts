@@ -1,6 +1,7 @@
 import express, { Request, Response, Router } from "express";
-import loginRouter from "./auth.routes"; 
+import loginRouter from "./auth.routes";
 import parishRouter from "./parish.routes";
+import reservationNotificationRouter from "./rsv.noti.routes";
 
 const router: Router = express.Router();
 
@@ -21,5 +22,7 @@ router.get("/health", (req: Request, res: Response) => {
 router.use("/auth", loginRouter);
 // Manages Parish crud route
 router.use("/parishes", parishRouter);
+
+router.use("/reservation-notifications", reservationNotificationRouter);
 
 export default router;
