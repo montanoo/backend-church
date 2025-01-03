@@ -12,7 +12,13 @@ const router = express.Router();
 /**
  * @swagger
  * tags:
- *   name: RecurringEvents
+ *   nameeate a new recurring event
+ *     tags: [RecurringEvents]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:: RecurringEvents
  *   description: API for managing recurring events
  */
 
@@ -20,13 +26,7 @@ const router = express.Router();
  * @swagger
  * /recurring-events:
  *   post:
- *     summary: Create a new recurring event
- *     tags: [RecurringEvents]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
+ *     summary: Cr
  *             type: object
  *             properties:
  *               recurringTitle:
