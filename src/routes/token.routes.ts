@@ -59,7 +59,7 @@ router.post("/", createToken);
  *       500:
  *         description: Error retrieving token
  */
-router.get("/:id", getTokenById);1
+router.get("/:id", getTokenById);
 
 /**
  * @swagger
