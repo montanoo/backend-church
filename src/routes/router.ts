@@ -3,6 +3,7 @@ import loginRouter from "./auth.routes";
 import parishRouter from "./parish.routes";
 import reservationNotificationRouter from "./rsv.noti.routes";
 import parishEventRoutes from "./parishEvent.routes";
+import firstCommunionRouter from "./1stcommunion.routes";
 
 const router: Router = express.Router();
 
@@ -27,5 +28,7 @@ router.use("/parishes", parishRouter);
 router.use("/reservation-notifications", reservationNotificationRouter);
 
 router.use("/parish-events", parishEventRoutes);
+
+router.use("/first-communion", firstCommunionRouter);
 
 export default router;
