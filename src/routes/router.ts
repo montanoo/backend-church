@@ -2,6 +2,7 @@ import express, { Request, Response, Router } from "express";
 import loginRouter from "./auth.routes";
 import parishRouter from "./parish.routes";
 import reservationNotificationRouter from "./rsv.noti.routes";
+import recurringEventRouter from "./recurringEvent.routes";
 import tokenRouter from "./token.routes";
 import parishEventRoutes from "./parishEvent.routes";
 
@@ -26,6 +27,8 @@ router.use("/auth", loginRouter);
 router.use("/parishes", parishRouter);
 
 router.use("/reservation-notifications", reservationNotificationRouter);
+
+router.use("/recurring-events", recurringEventRouter);
 
 router.use("/tokens", tokenRouter);
 router.use("/parish-events", parishEventRoutes);
