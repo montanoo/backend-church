@@ -3,6 +3,9 @@ import loginRouter from "./auth.routes";
 import parishRouter from "./parish.routes";
 import reservationNotificationRouter from "./rsv.noti.routes";
 import eventOrganizerRouter from "./events.org.routes";
+import recurringEventRouter from "./recurringEvent.routes";
+import tokenRouter from "./token.routes";
+import parishEventRoutes from "./parishEvent.routes";
 
 const router: Router = express.Router();
 
@@ -27,5 +30,11 @@ router.use("/parishes", parishRouter);
 router.use("/reservation-notifications", reservationNotificationRouter);
 
 router.use("/event-organizers", eventOrganizerRouter);
+
+router.use("/recurring-events", recurringEventRouter);
+
+router.use("/tokens", tokenRouter);
+
+router.use("/parish-events", parishEventRoutes);
 
 export default router;
