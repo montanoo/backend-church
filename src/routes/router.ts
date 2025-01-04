@@ -3,7 +3,8 @@ import loginRouter from "./auth.routes";
 import parishRouter from "./parish.routes";
 import reservationNotificationRouter from "./rsv.noti.routes";
 import recurringEventRouter from "./recurringEvent.routes";
-
+import tokenRouter from "./token.routes";
+import parishEventRoutes from "./parishEvent.routes";
 
 const router: Router = express.Router();
 
@@ -29,5 +30,7 @@ router.use("/reservation-notifications", reservationNotificationRouter);
 
 router.use("/recurring-events", recurringEventRouter);
 
+router.use("/tokens", tokenRouter);
+router.use("/parish-events", parishEventRoutes);
 
 export default router;
