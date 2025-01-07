@@ -16,7 +16,7 @@ const router = express.Router();
  *     summary: Create a new first communion
  *     description: This endpoint is used to create a new first communion.
  *     tags:
- *       - first communions
+ *       - First communions
  *     requestBody:
  *       required: true
  *       content:
@@ -24,26 +24,35 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               title:
- *                 type: string
- *                 example: Christmas Celebration
- *               description:
- *                 type: string
- *                 example: A grand celebration for Christmas
- *               startDateTime:
- *                 type: string
- *                 format: date-time
- *                 example: "2024-12-25T18:00:00Z"
- *               endDateTime:
- *                 type: string
- *                 format: date-time
- *                 example: "2024-12-25T22:00:00Z"
- *               organizerId:
- *                 type: integer
- *                 example: 1
- *               hallId:
- *                 type: integer
- *                 example: 1
+ *                   id:
+ *                     type: integer
+ *                     description: Unique identifier for the event
+ *                     example: 1
+ *                   communionName:
+ *                     type: string
+ *                     description: Name of the First Communion event
+ *                     example: "Spring First Communion Celebration"
+ *                   communionDate:
+ *                     type: string
+ *                     format: date-time
+ *                     description: Date and time of the event in ISO 8601 format
+ *                     example: "2024-03-15T10:00:00Z"
+ *                   parishId:
+ *                     type: integer
+ *                     description: Identifier for the parish hosting the event
+ *                     example: 101
+ *                   pastorName:
+ *                     type: string
+ *                     description: Name of the pastor presiding over the event
+ *                     example: "Father John Doe"
+ *                   pastorEmail:
+ *                     type: string
+ *                     description: Email address of the pastor
+ *                     example: "john.doe@example.com"
+ *                   phoneNumber:
+ *                     type: string
+ *                     description: Contact phone number for inquiries
+ *                     example: "+1-234-567-8900"
  *     responses:
  *       201:
  *         description: Communion created successfully
@@ -56,13 +65,13 @@ router.post("/", createFirstCommunion); // Create
  * @swagger
  * /api/first-communion:
  *   get:
- *     summary: Get all first communions
- *     description: This endpoint retrieves all first communions.
+ *     summary: Retrieve all First Communion events
+ *     description: Fetches a list of all First Communion events, including details about each event such as its name, date, parish, and pastor information.
  *     tags:
- *       - first communions
+ *       - First communions
  *     responses:
  *       200:
- *         description: A list of first communions
+ *         description: Successfully retrieved a list of First Communion events.
  *         content:
  *           application/json:
  *             schema:
@@ -72,22 +81,44 @@ router.post("/", createFirstCommunion); // Create
  *                 properties:
  *                   id:
  *                     type: integer
- *                   title:
+ *                     description: Unique identifier for the event
+ *                     example: 1
+ *                   communionName:
  *                     type: string
- *                   description:
- *                     type: string
- *                   startDateTime:
+ *                     description: Name of the First Communion event
+ *                     example: "Spring First Communion Celebration"
+ *                   communionDate:
  *                     type: string
  *                     format: date-time
- *                   endDateTime:
+ *                     description: Date and time of the event in ISO 8601 format
+ *                     example: "2024-03-15T10:00:00Z"
+ *                   parishId:
+ *                     type: integer
+ *                     description: Identifier for the parish hosting the event
+ *                     example: 101
+ *                   pastorName:
  *                     type: string
- *                     format: date-time
- *                   organizerId:
- *                     type: integer
- *                   hallId:
- *                     type: integer
+ *                     description: Name of the pastor presiding over the event
+ *                     example: "Father John Doe"
+ *                   pastorEmail:
+ *                     type: string
+ *                     description: Email address of the pastor
+ *                     example: "john.doe@example.com"
+ *                   phoneNumber:
+ *                     type: string
+ *                     description: Contact phone number for inquiries
+ *                     example: "+1-234-567-8900"
  *       500:
  *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Error message
+ *                   example: "An unexpected error occurred while retrieving First Communion events."
  */
 router.get("/", getFirstCommunion); // Read all
 
@@ -98,7 +129,7 @@ router.get("/", getFirstCommunion); // Read all
  *     summary: Get a first communion by ID
  *     description: This endpoint retrieves a specific first communion by its ID.
  *     tags:
- *       - first communions
+ *       - First communions
  *     parameters:
  *       - name: id
  *         in: path
@@ -114,22 +145,35 @@ router.get("/", getFirstCommunion); // Read all
  *             schema:
  *               type: object
  *               properties:
- *                 id:
- *                   type: integer
- *                 title:
- *                   type: string
- *                 description:
- *                   type: string
- *                 startDateTime:
- *                   type: string
- *                   format: date-time
- *                 endDateTime:
- *                   type: string
- *                   format: date-time
- *                 organizerId:
- *                   type: integer
- *                 hallId:
- *                   type: integer
+ *                   id:
+ *                     type: integer
+ *                     description: Unique identifier for the event
+ *                     example: 1
+ *                   communionName:
+ *                     type: string
+ *                     description: Name of the First Communion event
+ *                     example: "Spring First Communion Celebration"
+ *                   communionDate:
+ *                     type: string
+ *                     format: date-time
+ *                     description: Date and time of the event in ISO 8601 format
+ *                     example: "2024-03-15T10:00:00Z"
+ *                   parishId:
+ *                     type: integer
+ *                     description: Identifier for the parish hosting the event
+ *                     example: 101
+ *                   pastorName:
+ *                     type: string
+ *                     description: Name of the pastor presiding over the event
+ *                     example: "Father John Doe"
+ *                   pastorEmail:
+ *                     type: string
+ *                     description: Email address of the pastor
+ *                     example: "john.doe@example.com"
+ *                   phoneNumber:
+ *                     type: string
+ *                     description: Contact phone number for inquiries
+ *                     example: "+1-234-567-8900"
  *       404:
  *         description: Communion not found
  *       500:
@@ -144,7 +188,7 @@ router.get("/:id", getFirstCommunionById); // Read one
  *     summary: Update a first communion by ID
  *     description: This endpoint updates a specific first communion by its ID.
  *     tags:
- *       - first communions
+ *       - First communions
  *     parameters:
  *       - name: id
  *         in: path
@@ -159,26 +203,40 @@ router.get("/:id", getFirstCommunionById); // Read one
  *           schema:
  *             type: object
  *             properties:
- *               title:
- *                 type: string
- *                 example: Updated Christmas Celebration
- *               description:
- *                 type: string
- *                 example: An updated grand celebration for Christmas
- *               startDateTime:
- *                 type: string
- *                 format: date-time
- *                 example: "2024-12-25T19:00:00Z"
- *               endDateTime:
- *                 type: string
- *                 format: date-time
- *                 example: "2024-12-25T23:00:00Z"
- *               organizerId:
- *                 type: integer
- *                 example: 1
- *               hallId:
- *                 type: integer
- *                 example: 1
+ *                   id:
+ *                     type: integer
+ *                     description: Unique identifier for the event
+ *                     example: 1
+ *                   communionName:
+ *                     type: string
+ *                     description: Name of the First Communion event
+ *                     example: "Spring First Communion Celebration"
+ *                   communionDate:
+ *                     type: string
+ *                     format: date-time
+ *                     description: Date and time of the event in ISO 8601 format
+ *                     example: "2024-03-15T10:00:00Z"
+ *                   parishId:
+ *                     type: integer
+ *                     description: Identifier for the parish hosting the event
+ *                     example: 101
+ *                   pastorName:
+ *                     type: string
+ *                     description: Name of the pastor presiding over the event
+ *                     example: "Father John Doe"
+ *                   pastorEmail:
+ *                     type: string
+ *                     description: Email address of the pastor
+ *                     example: "john.doe@example.com"
+ *                   phoneNumber:
+ *                     type: string
+ *                     description: Contact phone number for inquiries
+ *                     example: "+1-234-567-8900"
+ *                   updatedAt:
+ *                    type: string
+ *                    format: date-time
+ *                    description: Date and time when the event was last updated
+ *                   example: "2024-03-15T10:00:00Z"
  *     responses:
  *       200:
  *         description: Communion updated successfully
@@ -196,7 +254,7 @@ router.put("/:id", updateFirstCommunion); // Update
  *     summary: Delete a first communion by ID
  *     description: This endpoint deletes a specific first communion by its ID.
  *     tags:
- *       - first communions
+ *       - First communions
  *     parameters:
  *       - name: id
  *         in: path
