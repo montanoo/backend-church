@@ -8,6 +8,7 @@ import tokenRouter from "./token.routes";
 import parishEventRoutes from "./parishEvent.routes";
 import marriageRoutes from "./marriage.routes";
 import userRouter from "./users.routes";
+import confirmationRouter from "./confirmation.routes";
 
 const router: Router = express.Router();
 
@@ -42,5 +43,7 @@ router.use("/parish-events", parishEventRoutes);
 router.use("/marriages", marriageRoutes);
 
 router.use("/users", userRouter);
+
+router.use("/confirmations", confirmationRouter);
 
 export default router;
