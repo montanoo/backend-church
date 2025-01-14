@@ -6,6 +6,7 @@ import eventOrganizerRouter from "./events.org.routes";
 import recurringEventRouter from "./recurringEvent.routes";
 import tokenRouter from "./token.routes";
 import parishEventRoutes from "./parishEvent.routes";
+import confirmationRouter from "./confirmation.routes";
 
 const router: Router = express.Router();
 
@@ -36,5 +37,7 @@ router.use("/recurring-events", recurringEventRouter);
 router.use("/tokens", tokenRouter);
 
 router.use("/parish-events", parishEventRoutes);
+
+router.use("/confirmations", confirmationRouter);
 
 export default router;
