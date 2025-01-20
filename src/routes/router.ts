@@ -10,6 +10,7 @@ import marriageRoutes from "./marriage.routes";
 import userRouter from "./users.routes";
 import confirmationRouter from "./confirmation.routes";
 import hallRouter from "./hall.routes";
+import hallReservationRouter from "./hall.reservation.routes";
 
 const router: Router = express.Router();
 
@@ -48,5 +49,7 @@ router.use("/users", userRouter);
 router.use("/confirmations", confirmationRouter);
 
 router.use("/halls", hallRouter);
+
+router.use("/hall-reservation", hallReservationRouter);
 
 export default router;
