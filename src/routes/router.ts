@@ -11,6 +11,7 @@ import userRouter from "./users.routes";
 import confirmationRouter from "./confirmation.routes";
 import hallRouter from "./hall.routes";
 import hallReservationRouter from "./hall.reservation.routes";
+import baptismRouter from "./baptism.routes";
 
 const router: Router = express.Router();
 
@@ -51,5 +52,7 @@ router.use("/confirmations", confirmationRouter);
 router.use("/halls", hallRouter);
 
 router.use("/hall-reservation", hallReservationRouter);
+
+router.use("/baptisms", baptismRouter);
 
 export default router;
