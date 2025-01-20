@@ -5,7 +5,14 @@ import * as parishEventService from "../services/parishEvents.service";
 // Create a ParishEvent
 export const createParishEvent = async (req: Request, res: Response) => {
   try {
-    const { title, description, startDateTime, endDateTime, organizerId, hallId } = req.body;
+    const {
+      title,
+      description,
+      startDateTime,
+      endDateTime,
+      organizerId,
+      hallId,
+    } = req.body;
 
     const newEvent = await parishEventService.createParishEvent(
       title,
@@ -17,11 +24,13 @@ export const createParishEvent = async (req: Request, res: Response) => {
     );
 
     res.status(201).json(newEvent);
-  } catch (error: unknown) {  // Typing the error as 'unknown'
-    if (error instanceof Error) {  // Check if it's an instance of Error
+  } catch (error: unknown) {
+    // Typing the error as 'unknown'
+    if (error instanceof Error) {
+      // Check if it's an instance of Error
       res.status(500).json({ error: error.message });
     } else {
-      res.status(500).json({ error: 'An unexpected error occurred' });
+      res.status(500).json({ error: "An unexpected error occurred" });
     }
   }
 };
@@ -30,12 +39,20 @@ export const createParishEvent = async (req: Request, res: Response) => {
 export const getParishEvents = async (req: Request, res: Response) => {
   try {
     const events = await parishEventService.getParishEvents();
-    res.status(200).json(events);
+    const transformedEvents = events.map((event) => ({
+      ...event,
+      start: event.startDateTime,
+      end: event.endDateTime,
+      startDateTime: undefined,
+      endDateTime: undefined,
+    }));
+
+    res.status(200).json(transformedEvents);
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(500).json({ error: error.message });
     } else {
-      res.status(500).json({ error: 'An unexpected error occurred' });
+      res.status(500).json({ error: "An unexpected error occurred" });
     }
   }
 };
@@ -55,7 +72,7 @@ export const getParishEventById = async (req: Request, res: Response) => {
     if (error instanceof Error) {
       res.status(500).json({ error: error.message });
     } else {
-      res.status(500).json({ error: 'An unexpected error occurred' });
+      res.status(500).json({ error: "An unexpected error occurred" });
     }
   }
 };
@@ -64,7 +81,14 @@ export const getParishEventById = async (req: Request, res: Response) => {
 export const updateParishEvent = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { title, description, startDateTime, endDateTime, organizerId, hallId } = req.body;
+    const {
+      title,
+      description,
+      startDateTime,
+      endDateTime,
+      organizerId,
+      hallId,
+    } = req.body;
 
     const updatedEvent = await parishEventService.updateParishEvent(
       Number(id),
@@ -81,7 +105,7 @@ export const updateParishEvent = async (req: Request, res: Response) => {
     if (error instanceof Error) {
       res.status(500).json({ error: error.message });
     } else {
-      res.status(500).json({ error: 'An unexpected error occurred' });
+      res.status(500).json({ error: "An unexpected error occurred" });
     }
   }
 };
@@ -98,7 +122,7 @@ export const deleteParishEvent = async (req: Request, res: Response) => {
     if (error instanceof Error) {
       res.status(500).json({ error: error.message });
     } else {
-      res.status(500).json({ error: 'An unexpected error occurred' });
+      res.status(500).json({ error: "An unexpected error occurred" });
     }
   }
 };
