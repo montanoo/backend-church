@@ -1,3 +1,4 @@
+//import { response } from "express";
 import { prisma } from "../utils/prisma";
 
 export const createHall = async (data: {
@@ -5,10 +6,21 @@ export const createHall = async (data: {
   capacity?: number;
   parishId: number;
 }) => {
-  return await prisma.hall.create({
-    data,
-  });
+  const { hallName, capacity, parishId } = data;
+  const response = await prisma.hall.create({
+    data: {
+      hallName,
+      capacity,
+      parishId,
+  },
+});
+
+  return {
+    value: response.id,
+    label: response.hallName
+  };
 };
+
 
 export const getHallById = async (id: number) => {
   return await prisma.hall.findUnique({
@@ -17,7 +29,12 @@ export const getHallById = async (id: number) => {
 };
 
 export const getAllHalls = async () => {
-  return await prisma.hall.findMany();
+  const halls =  await prisma.hall.findMany();
+  const response = halls.map((hall) => ({
+    value: hall.id,
+    label: hall.hallName
+}));
+  return response;
 };
 
 export const updateHall = async (

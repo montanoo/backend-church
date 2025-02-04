@@ -64,7 +64,7 @@ router.post("/", createHall);
  *       500:
  *         description: Error retrieving hall
  */
-router.get("/:id", getHallById);
+router.get("/", getAllHalls);
 
 /**
  * @swagger
@@ -78,7 +78,7 @@ router.get("/:id", getHallById);
  *       500:
  *         description: Error retrieving halls
  */
-router.get("/", getAllHalls);
+router.get("/:id", getHallById);
 
 /**
  * @swagger

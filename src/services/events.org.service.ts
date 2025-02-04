@@ -1,31 +1,35 @@
-import {CreateEventsOrganizer, UpdateEventsOrganizer,    
-} from '../types/events.organizer.types';
+import { UpdateEventsOrganizer} from '../types/events.organizer.types';
 import {prisma} from '../utils/prisma';
 
-export const createEventsOrganizer = async (
-    data: CreateEventsOrganizer) => {
-  try {
-    const eventsOrganizer = await prisma.eventOrganizer.create(
-        {
-            data,
-        }
-    );
+export const createEventsOrganizer = async (data: {
+      name: string;
+      email: string;
+      phoneNumber: string;
+  }) => {
+    const { name, email, phoneNumber } = data;
+    const response = await prisma.eventOrganizer.create({
+      data: {
+        name,
+        email,
+        phoneNumber,
+      },
+    });
 
-    return eventsOrganizer;
-  } catch (err) {
-    console.log(err);
-  }
+    return {
+      value: response.id,
+      label: response.name,
+    };
 };
 
 export const listAll = async () => {
-  try {
-    const allEventsOrganizers = 
-    await prisma.eventOrganizer.findMany();
+    const allEventsOrganizers = await prisma.eventOrganizer.findMany();
 
-    return allEventsOrganizers;
-  } catch (err) {
-    console.log(err);
-  }
+    const response = allEventsOrganizers.map((eventsOrganizer) => ({
+      value: eventsOrganizer.id,
+      label: eventsOrganizer.name,
+    }));
+
+    return response;
 };
 
 export const listById = async (id: number) => {

@@ -1,79 +1,54 @@
 import {Request, Response} from 'express';
-import {
-    createEventsOrganizer, 
-    deleteEventsOrganizer, 
-    listAll, 
-    listById, 
-    updateEventsOrganizer} 
-    from '../services/events.org.service';
+import * as eventOrgService from '../services/events.org.service';
 
 export const create = async (req: Request, res: Response) => {
   try {
-    const {name, email, phoneNumber} = req.body;
-
-    const eventOrganizer = await createEventsOrganizer({
-      name,
-      email,
-      phoneNumber,
-    });
-
-    return res.status(201).json({data: eventOrganizer});
+    const eventOrganizer = await eventOrgService.createEventsOrganizer(req.body);
+    res.status(201).json(eventOrganizer);
+    //return res.status(201).json({data: eventOrganizer});
   } catch (err) {
     console.log(err);
-    return res.status(500).json({message: 'Server error'});
+    //return res.status(500).json({message: 'Server error'});
   }
 };
 
 export const getAll = async (_: Request, res: Response) => {
   try {
-    const allEvents = await listAll();
-
-    return res.status(200).json({data: allEvents});
+    const allEventsOrganizers = await eventOrgService.listAll();
+    res.json(allEventsOrganizers);
   } catch (err) {
     console.log(err);
-    return res.status(500).json({message: 'Server error'});
+    res.status(500).json({message: 'Server error'});
   }
 };
 
 export const getById = async (req: Request, res: Response) => {
   try {
-    const {id} = req.params;
-
-    const eventById = await listById(Number(id));
-
-    if (!eventById) {
-      return res
-        .status(200)
-        .json({data: [], message: 'Information not found'});
+    const eventOrganizer = await eventOrgService.listById(Number(req.params.id));
+    if (!eventOrganizer) {
+      return res.status(404).json({message: 'Event organizer not found'});
     }
-    return res.status(200).json({data: eventById});
+    res.json(eventOrganizer);
   } catch (err) {
     console.log(err);
-    return res.status(500).json({message: 'Server error'});
+    res.status(500).json({message: 'Server error'});
   }
 };
 
 export const update = async (req: Request, res: Response) => {
   try {
-    const {id} = req.params;
-    const eventData = req.body;
-
-    const updatedEvent = await updateEventsOrganizer(Number(id), eventData);
-
-    return res.status(200).json({data: updatedEvent});
+    const updatedEventOrganizer = await eventOrgService.updateEventsOrganizer(Number(req.params.id), req.body);
+    res.json(updatedEventOrganizer);
   } catch (err) {
     console.log(err);
-    return res.status(500).json({message: 'Server error'});
+    res.status(500).json({message: 'Server error'});
   }
 }
 
 export const deleteEventOrgById = async (req: Request, res: Response) => {
   try {
-    const {id} = req.params;
-
-    await deleteEventsOrganizer(Number(id));
-
-    return res.status(204).json({data: []});
+    await eventOrgService.deleteEventsOrganizer(Number(req.params.id));
+    res.status(204).send();
   } catch (err) {
     console.log(err);
     return res.status(500).json({message: 'Server error'});
