@@ -71,6 +71,7 @@ model ParishEvent {
   endDateTime   DateTime
   organizer     EventOrganizer @relation(fields: [organizerId], references: [id])
   organizerId   Int
+  price         Float          @default(0)
   hall          Hall           @relation(fields: [hallId], references: [id])
   hallId        Int
   createdAt     DateTime       @default(now())

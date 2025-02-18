@@ -12,15 +12,14 @@ export const createHall = async (data: {
       hallName,
       capacity,
       parishId,
-  },
-});
+    },
+  });
 
   return {
     value: response.id,
-    label: response.hallName
+    label: response.hallName,
   };
 };
-
 
 export const getHallById = async (id: number) => {
   return await prisma.hall.findUnique({
@@ -29,11 +28,11 @@ export const getHallById = async (id: number) => {
 };
 
 export const getAllHalls = async () => {
-  const halls =  await prisma.hall.findMany();
+  const halls = await prisma.hall.findMany();
   const response = halls.map((hall) => ({
     value: hall.id,
-    label: hall.hallName
-}));
+    label: hall.hallName,
+  }));
   return response;
 };
 
