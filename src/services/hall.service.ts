@@ -5,8 +5,13 @@ export const createHall = async (data: {
   capacity?: number;
   parishId: number;
 }) => {
+  const { hallName, capacity, parishId } = data;
   return await prisma.hall.create({
-    data,
+    data: {
+      hallName,
+      capacity,
+      parishId,
+    },
   });
 };
 
