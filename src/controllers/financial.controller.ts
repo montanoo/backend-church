@@ -27,7 +27,7 @@ const getTransactionsById = async (req: Request, res: Response): Promise<Respons
     const transaction = await financialService.getTransactionsById(parseInt(id));
 
     if (!transaction) {
-      return res.status(404).json({ message: "Marriage record not found" });
+      return res.status(404).json({ message: "Transaction record not found" });
     }
 
     return res.status(200).json(transaction);
@@ -43,7 +43,7 @@ const updateTransaction = async (req: Request, res: Response): Promise<Response>
     const updatedTransaction = await financialService.updateTransaction(parseInt(id), req.body);
 
     if (!updatedTransaction) {
-      return res.status(404).json({ message: "Marriage record not found" });
+      return res.status(404).json({ message: "Transaction record not found" });
     }
 
     return res.status(200).json(updatedTransaction);
@@ -59,7 +59,7 @@ const deleteTransaction = async (req: Request, res: Response): Promise<Response>
     const deleted = await financialService.deleteTransaction(parseInt(id));
 
     if (!deleted) {
-      return res.status(404).json({ message: "Marriage record not found" });
+      return res.status(404).json({ message: "Transaction record not found" });
     }
 
     return res.status(204).send();

@@ -13,6 +13,7 @@ import hallRouter from "./hall.routes";
 import hallReservationRouter from "./hall.reservation.routes";
 import baptismRouter from "./baptism.routes";
 import firstCommunionRouter from "./1stcommunion.routes";
+import financesRouter from "./financial.routes";
 
 const router: Router = express.Router();
 
@@ -57,5 +58,7 @@ router.use("/hall-reservation", hallReservationRouter);
 router.use("/baptisms", baptismRouter);
 
 router.use("/first-communion", firstCommunionRouter);
+
+router.use("/transactions", financesRouter);
 
 export default router;

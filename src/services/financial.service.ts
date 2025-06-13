@@ -16,12 +16,13 @@ const createTransaction  = async (data: {
     description: string;
     transactionDate: Date;
     category: string;
-    reservationId: number;
   }) => {
     return prisma.financialTransaction.create({
       data,
     });
 };
+
+
 
 const updateTransaction = async (id: number, data: {
     transactionType: string;
@@ -29,7 +30,6 @@ const updateTransaction = async (id: number, data: {
     description: string;
     transactionDate: Date;
     category: string;
-    reservationId: number;
 }) => {
   return prisma.financialTransaction.update({
     where: { id },
