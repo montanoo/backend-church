@@ -156,7 +156,6 @@ model HallReservation {
   createdAt                DateTime                  @default(now())
   updatedAt                DateTime?
   ReservationNotifications ReservationNotification[]
-  FinancialTransactions    FinancialTransaction[]
 }
 
 model Hall {
@@ -191,8 +190,6 @@ model FinancialTransaction {
   description     String
   transactionDate DateTime
   category        String
-  reservation     HallReservation @relation(fields: [reservationId], references: [id])
-  reservationId   Int
   createdAt       DateTime        @default(now())
   updatedAt       DateTime?
 }
