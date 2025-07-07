@@ -116,4 +116,6 @@ router.put("/:id", baptismController.updateBaptism);
  */
 router.delete("/:id", baptismController.deleteBaptism);
 
+router.get("/pdf/:id", baptismController.getBaptismCertificatePDF);
+
 export default router;

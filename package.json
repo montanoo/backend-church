@@ -40,6 +40,8 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.12.0",
     "nodemon": "^3.1.7",
+    "pupeteer": "^0.0.1",
+    "puppeteer": "^24.11.2",
     "save-dev": "^0.0.1-security",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",

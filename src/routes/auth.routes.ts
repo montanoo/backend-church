@@ -1,5 +1,5 @@
 import express from "express";
-import login  from "../controllers/auth.controller";
+import authController from "../controllers/auth.controller";
 
 const router = express.Router();
 
@@ -52,6 +52,28 @@ const router = express.Router();
  *                   type: string
  *                   example: "Something went wrong"
  */
-router.post("/login", login);
+router.post("/login", authController.login);
+
+/*
+ * @swagger
+ * /api/auth/logout:
+ *   post:
+ *     summary: Logout a user
+ *     description: This endpoint allows a user to log out by clearing their session.
+ *     tags:
+ *       - Authentication
+ *     responses:
+ *       200:
+ *         description: Successful logout
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Logged out"
+ */
+router.post("/logout", authController.logout);
 
 export default router;
